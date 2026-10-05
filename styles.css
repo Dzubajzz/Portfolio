@@ -32,6 +32,10 @@ main {
 
 }
 
+main section {
+    width: 100%;
+}
+
 #home {
     max-width: 70rem;
 }
@@ -49,6 +53,26 @@ main {
     margin: 1.5rem 0 0; 
     font-size: clamp(1.4rem, 1.5vw, 2.5rem);
     line-height: 1.2;
+}
+
+#projects {
+    max-width: 70rem;
+    padding: 4rem 0;
+}
+
+#projects h2 {
+    margin: 0;
+    color: var(--green);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1;
+}
+
+#projects > p {
+    max-width: 48rem;
+    margin: 1rem 0 3rem;
+    font-size: clamp(1rem, 1.4vw, 1.4rem);
+    line-height: 1.5;
 }
 
 nav ul {
