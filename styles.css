@@ -13,7 +13,7 @@ body {
     margin: 0;
     background: var(--background);
     color: var(--text);
-    font-family: 'arial', sans-serif;
+    font-family: 'Bricolage Grotesque', Arial, sans-serif;
     display: flex;
     flex-direction: column;
 }
@@ -44,7 +44,8 @@ main section {
     margin: 0;
     color: var(--green);
     font-size: clamp(3.3rem, 8vw, 5rem);
-    font-weight: 400;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     line-height: 0.95;
 }
 
@@ -55,24 +56,62 @@ main section {
     line-height: 1.2;
 }
 
-#projects {
+#projects,
+#info {
     max-width: 70rem;
     padding: 4rem 0;
 }
 
-#projects h2 {
+#projects h2,
+#info h2 {
     margin: 0;
     color: var(--green);
     font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 400;
+    font-weight: 700;
+    letter-spacing: -0.02em;
     line-height: 1;
 }
 
-#projects > p {
+#projects > p,
+#info > p {
     max-width: 48rem;
     margin: 1rem 0 3rem;
     font-size: clamp(1rem, 1.4vw, 1.4rem);
     line-height: 1.5;
+}
+
+section[hidden] {
+    display: none;
+}
+
+#projects article {
+    max-width: 48rem;
+    padding: 1.5rem;
+    border: 1px solid var(--green);
+    border-radius: 0.5rem;
+}
+
+#projects article h3,
+#info h3 {
+    margin: 0 0 0.75rem;
+    color: var(--green);
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+#projects article p {
+    margin: 0 0 1rem;
+    line-height: 1.5;
+}
+
+#projects article a,
+#info a {
+    color: var(--green);
+}
+
+a:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 4px;
 }
 
 nav ul {
@@ -131,5 +170,39 @@ footer p {
 
     footer {
         padding: 0 1.5rem 2rem;
+    }
+}
+
+/* Page transitions: only the content moves, nav and footer stay put */
+main {
+    view-transition-name: page;
+}
+
+::view-transition-old(page) {
+    animation: page-out 0.25s ease-in both;
+}
+
+::view-transition-new(page) {
+    animation: page-in 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes page-out {
+    to {
+        opacity: 0;
+        transform: translateX(-3rem);
+    }
+}
+
+@keyframes page-in {
+    from {
+        opacity: 0;
+        transform: translateX(3rem);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(page),
+    ::view-transition-new(page) {
+        animation: none;
     }
 }
